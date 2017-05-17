@@ -78,6 +78,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Act.cs" />
+    <Compile Include="Assets\Scripts\Cues\Click.cs" />
+    <Compile Include="Assets\Scripts\Cues\Door.cs" />
+    <Compile Include="Assets\Scripts\Cues\Begin.cs" />
+    <Compile Include="Assets\Scripts\Cues\Darkness.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Switch.cs" />
   </ItemGroup>

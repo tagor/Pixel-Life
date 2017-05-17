@@ -2,43 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
+
 public class Act : MonoBehaviour
 {
+    public Player player;
+    public Camera camera;
 
-    public string name;
-    private bool cueActivated = false;
-    private AudioSource audioSource;
+    [Tooltip("Effects the Zoom, lower value is more zoom")]
+    public float fieldOfView;
+    private float oldFieldOfView;
 
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-    void Update()
-    {
-        CheckForCue();
-    }
+    public Vector2 playerPosition;
+    private Vector2 oldPlayerPosition;
 
-    void CheckForCue()
-    {
-        if (cueActivated)
-            return;
+    public Vector3 zoomPosition;
+    private Vector3 oldCamPosition;
 
-        cueActivated = true;
-        PlayAct();
-    }
+    private bool curtainsOpen;
 
-    void PlayAct()
-    {
-        audioSource.Play();
-        EndAct();
-     
+    public void PrepareAndOpenCurtains()
+    {    
+        DisableMovement();
+        PositionCharacters();
+        PositionCamera();
+        ZoomIn();
+
+        curtainsOpen = true;
     }
 
-
-    void EndAct()
+ 
+    private void DisableMovement()
     {
-        Destroy(this, audioSource.clip.length + 0.3f);
-        Destroy(audioSource, audioSource.clip.length + 0.3f);
+        player.movementEnabled = false;
     }
+    private void PositionCharacters()
+    {
+        oldPlayerPosition = player.transform.position;
+        player.transform.position = playerPosition;
+    }   
+    private void PositionCamera()
+    {
+        oldCamPosition = camera.transform.position;
+        camera.transform.position = zoomPosition;
+    }
+    private void ZoomIn()
+    {
+        oldFieldOfView = camera.fieldOfView;
+        camera.fieldOfView = fieldOfView;
+    }
+
+    public void CloseCurtains()
+    {
+        EnableMovement();
+        FreeCameraPosition();
+        FreeCharacterPositions();
+        ZoomOut();
+
+        curtainsOpen = false;
+    }
+
+    private void EnableMovement()
+    {
+        player.movementEnabled = true;
+    }
+    private void FreeCameraPosition()
+    {
+        camera.transform.position = oldCamPosition;
+    }
+    private void FreeCharacterPositions()
+    {
+        player.transform.position = oldPlayerPosition;
+    }
+    private void ZoomOut()
+    {
+        camera.transform.SetParent(null);
+        camera.fieldOfView = oldFieldOfView;
+    }
+
 }
