@@ -15,6 +15,7 @@ public class Switch : MonoBehaviour
 
     private void Activate()
     {
+
         SceneManager.LoadScene(scene);
     }
 }

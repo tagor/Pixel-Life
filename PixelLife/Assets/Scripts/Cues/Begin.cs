@@ -2,21 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class Begin : MonoBehaviour
 {
-    private AudioSource audio;
+    public string narration_key;
 
     void Start()
     {
-        audio = GetComponent<AudioSource>();
-        End();
-        
-    }
-
-    void End()
-    {
-        Destroy(this, audio.clip.length + 0.5f);
-        Destroy(audio, audio.clip.length + 0.5f);
+        Narrator.Instance.narrate(narration_key);       
     }
 }

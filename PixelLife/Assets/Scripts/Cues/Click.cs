@@ -10,9 +10,11 @@ public class Click : MonoBehaviour
 
     void OnMouseDown()
     {
-        //todo: act code
-        Act act = GetComponent<Act>();
-        act.PrepareAndOpenCurtains();
+        Event Event = GetComponent<Event>();
+        Event.Run();
+
+        Cursor.SetCursor(normalCursorTexture2D, Vector2.zero, CursorMode.Auto);
+        Destroy(this);
     }
 
     void OnMouseEnter()
