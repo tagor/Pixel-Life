@@ -88,13 +88,23 @@ public class Act : Event
     {   
         if (narration_key != "")
         {
-            Narrator.Instance.narrate(narration_key);
+            Narrator.Instance.narrate(narration_key, 1.0f);
         } 
+    }
+
+    private void ExecuteResults()
+    {
+        if (hasResult)
+        {
+            Result result = GetComponent<Result>();
+            result.Execute(oldPlayerPosition.x, oldPlayerPosition.y, oldCamPosition.x, oldCamPosition.y, oldCamPosition.z, oldFieldOfView);
+        }
     }
 
     public string[] Lines;
     public AudioClip[] audioClips;
     public string narration_key;
+    public bool hasResult;
     private AudioSource audioSource;
     private int stage = -1;
     void Start()
@@ -115,8 +125,10 @@ public class Act : Event
 
                 if (stage >= Lines.Length)
                 {
+                    ExecuteResults();
                     NarrateClose();
                     CloseCurtains();
+                    Destroy(this);
                     return;
                 }
 
@@ -128,6 +140,5 @@ public class Act : Event
         }
 
     }
-
 
 }

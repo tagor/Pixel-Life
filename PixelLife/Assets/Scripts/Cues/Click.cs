@@ -14,6 +14,7 @@ public class Click : MonoBehaviour
         Event.Run();
 
         Cursor.SetCursor(normalCursorTexture2D, Vector2.zero, CursorMode.Auto);
+
         Destroy(this);
     }
 

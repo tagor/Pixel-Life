@@ -75,17 +75,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Audio\Narrator.cs" />
+    <Compile Include="Assets\Scripts\Audio\SoundEffector.cs" />
     <Compile Include="Assets\Scripts\Cues\Begin.cs" />
     <Compile Include="Assets\Scripts\Cues\Click.cs" />
     <Compile Include="Assets\Scripts\Cues\Darkness.cs" />
+    <Compile Include="Assets\Scripts\Cues\EnterRoom.cs" />
+    <Compile Include="Assets\Scripts\Cues\GettingMilk.cs" />
+    <Compile Include="Assets\Scripts\Cues\Switch.cs" />
     <Compile Include="Assets\Scripts\Events\Act.cs" />
     <Compile Include="Assets\Scripts\Events\ElevatorControl.cs" />
     <Compile Include="Assets\Scripts\Events\Event.cs" />
     <Compile Include="Assets\Scripts\Events\Narration.cs" />
     <Compile Include="Assets\Scripts\HUD.cs" />
-    <Compile Include="Assets\Scripts\Narrator.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Switch.cs" />
+    <Compile Include="Assets\Scripts\Results\ActivateClick.cs" />
+    <Compile Include="Assets\Scripts\Results\NastyFeet.cs" />
+    <Compile Include="Assets\Scripts\Results\RemoveCollider.cs" />
+    <Compile Include="Assets\Scripts\Results\Result.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

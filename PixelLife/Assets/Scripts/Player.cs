@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
             int moveVer = HandleMovement();
             HandleAnimation(moveVer);
         }
+        else
+        {
+            animator.SetInteger("State", 0);
+        }
     }
 
     private int HandleMovement()
